@@ -185,6 +185,7 @@
         "appTitle": "LoRA Manager",
         "navigation": {
             "loras": "LoRA",
+            "anima_loras": "[TODO: Translate] Anima LoRAs",
             "recipes": "レシピ",
             "checkpoints": "Checkpoint",
             "embeddings": "Embedding",
@@ -194,6 +195,7 @@
             "placeholder": "検索...",
             "placeholders": {
                 "loras": "LoRAを検索...",
+                "anima_loras": "[TODO: Translate] Search Anima LoRAs...",
                 "recipes": "レシピを検索...",
                 "checkpoints": "checkpointを検索...",
                 "embeddings": "embeddingを検索..."
@@ -472,6 +474,7 @@
             "restartRequired": "Requires restart to take effect",
             "modelTypes": {
                 "lora": "LoRAパス",
+                "anima_loras": "[TODO: Translate] Anima LoRA Paths",
                 "checkpoint": "Checkpointパス",
                 "unet": "Diffusionモデルパス",
                 "embedding": "Embeddingパス"
@@ -1396,6 +1399,10 @@
         "loras": {
             "title": "LoRA Managerを初期化中",
             "message": "LoRAキャッシュをスキャンして構築中。数分かかる場合があります..."
+        },
+        "anima_loras": {
+            "title": "[TODO: Translate] Initializing Anima LoRA Manager",
+            "message": "[TODO: Translate] Scanning and building Anima LoRA cache. This may take a few minutes..."
         },
         "checkpoints": {
             "title": "Checkpoint Managerを初期化中",

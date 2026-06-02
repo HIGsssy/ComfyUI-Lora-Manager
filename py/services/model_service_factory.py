@@ -118,19 +118,24 @@ class ModelServiceFactory:
 
 
 def register_default_model_types():
-    """Register the default model types (LoRA, Checkpoint, and Embedding)"""
+    """Register the default model types (LoRA, Anima LoRA, Checkpoint, and Embedding)"""
     from ..services.lora_service import LoraService
+    from ..services.anima_lora_service import AnimaLoraService
     from ..services.checkpoint_service import CheckpointService
     from ..services.embedding_service import EmbeddingService
     from ..routes.lora_routes import LoraRoutes
+    from ..routes.anima_lora_routes import AnimaLoraRoutes
     from ..routes.checkpoint_routes import CheckpointRoutes
     from ..routes.embedding_routes import EmbeddingRoutes
-    
+
     # Register LoRA model type
     ModelServiceFactory.register_model_type('lora', LoraService, LoraRoutes)
-    
+
+    # Register Anima LoRA model type (distinct category, LoRA-compatible behavior)
+    ModelServiceFactory.register_model_type('anima_loras', AnimaLoraService, AnimaLoraRoutes)
+
     # Register Checkpoint model type
     ModelServiceFactory.register_model_type('checkpoint', CheckpointService, CheckpointRoutes)
-    
+
     # Register Embedding model type
     ModelServiceFactory.register_model_type('embedding', EmbeddingService, EmbeddingRoutes)

@@ -8,6 +8,7 @@ import { state } from '../state/index.js';
 // Model type definitions
 export const MODEL_TYPES = {
     LORA: 'loras',
+    ANIMA_LORA: 'anima_loras',
     CHECKPOINT: 'checkpoints',
     EMBEDDING: 'embeddings' // Future model type
 };
@@ -22,6 +23,15 @@ export const MODEL_CONFIG = {
         supportsBulkOperations: true,
         supportsMove: true,
         templateName: 'loras.html'
+    },
+    [MODEL_TYPES.ANIMA_LORA]: {
+        displayName: 'Anima LoRAs',
+        singularName: 'anima_lora',
+        defaultPageSize: 100,
+        supportsLetterFilter: true,
+        supportsBulkOperations: true,
+        supportsMove: true,
+        templateName: 'anima_loras.html'
     },
     [MODEL_TYPES.CHECKPOINT]: {
         displayName: 'Checkpoint',
@@ -127,6 +137,17 @@ export const MODEL_SPECIFIC_ENDPOINTS = {
         getTriggerWordsPost: `/api/lm/${MODEL_TYPES.LORA}/get_trigger_words`,
         civitaiModelByVersion: `/api/lm/${MODEL_TYPES.LORA}/civitai/model/version`,
         civitaiModelByHash: `/api/lm/${MODEL_TYPES.LORA}/civitai/model/hash`,
+    },
+    [MODEL_TYPES.ANIMA_LORA]: {
+        letterCounts: `/api/lm/${MODEL_TYPES.ANIMA_LORA}/letter-counts`,
+        notes: `/api/lm/${MODEL_TYPES.ANIMA_LORA}/get-notes`,
+        triggerWords: `/api/lm/${MODEL_TYPES.ANIMA_LORA}/get-trigger-words`,
+        previewUrl: `/api/lm/${MODEL_TYPES.ANIMA_LORA}/preview-url`,
+        civitaiUrl: `/api/lm/${MODEL_TYPES.ANIMA_LORA}/civitai-url`,
+        metadata: `/api/lm/${MODEL_TYPES.ANIMA_LORA}/metadata`,
+        getTriggerWordsPost: `/api/lm/${MODEL_TYPES.ANIMA_LORA}/get_trigger_words`,
+        civitaiModelByVersion: `/api/lm/${MODEL_TYPES.ANIMA_LORA}/civitai/model/version`,
+        civitaiModelByHash: `/api/lm/${MODEL_TYPES.ANIMA_LORA}/civitai/model/hash`,
     },
     [MODEL_TYPES.CHECKPOINT]: {
         info: `/api/lm/${MODEL_TYPES.CHECKPOINT}/info`,

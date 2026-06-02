@@ -136,9 +136,12 @@ export const ModelContextMenuMixin = {
             try {
                 state.loadingManager.showSimpleLoading('Re-linking to Civitai...');
                 
-                const endpoint = this.modelType === 'checkpoint' ? 
-                    '/api/lm/checkpoints/relink-civitai' : 
-                    '/api/lm/loras/relink-civitai';
+                let endpoint = '/api/lm/loras/relink-civitai';
+                if (this.modelType === 'checkpoint') {
+                    endpoint = '/api/lm/checkpoints/relink-civitai';
+                } else if (this.modelType === 'anima_loras') {
+                    endpoint = '/api/lm/anima_loras/relink-civitai';
+                }
                 
                 const response = await fetch(endpoint, {
                     method: 'POST',

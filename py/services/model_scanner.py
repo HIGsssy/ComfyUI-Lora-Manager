@@ -343,6 +343,7 @@ class ModelScanner:
             # Determine the page type based on model type
             page_type_map = {
                 'lora': 'loras',
+                'anima_loras': 'anima_loras',
                 'checkpoint': 'checkpoints',
                 'embedding': 'embeddings'
             }

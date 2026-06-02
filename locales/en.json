@@ -185,6 +185,7 @@
         "appTitle": "LoRA Manager",
         "navigation": {
             "loras": "LoRAs",
+            "anima_loras": "Anima LoRAs",
             "recipes": "Recipes",
             "checkpoints": "Checkpoints",
             "embeddings": "Embeddings",
@@ -194,6 +195,7 @@
             "placeholder": "Search...",
             "placeholders": {
                 "loras": "Search LoRAs...",
+                "anima_loras": "Search Anima LoRAs...",
                 "recipes": "Search recipes...",
                 "checkpoints": "Search checkpoints...",
                 "embeddings": "Search embeddings..."
@@ -472,6 +474,7 @@
             "restartRequired": "Requires restart to take effect",
             "modelTypes": {
                 "lora": "LoRA Paths",
+                "anima_loras": "Anima LoRA Paths",
                 "checkpoint": "Checkpoint Paths",
                 "unet": "Diffusion Model Paths",
                 "embedding": "Embedding Paths"
@@ -1396,6 +1399,10 @@
         "loras": {
             "title": "Initializing LoRA Manager",
             "message": "Scanning and building LoRA cache. This may take a few minutes..."
+        },
+        "anima_loras": {
+            "title": "Initializing Anima LoRA Manager",
+            "message": "Scanning and building Anima LoRA cache. This may take a few minutes..."
         },
         "checkpoints": {
             "title": "Initializing Checkpoint Manager",

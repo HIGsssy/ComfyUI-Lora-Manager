@@ -185,6 +185,7 @@
         "appTitle": "LoRA 管理器",
         "navigation": {
             "loras": "LoRA",
+            "anima_loras": "[TODO: Translate] Anima LoRAs",
             "recipes": "配方",
             "checkpoints": "Checkpoint",
             "embeddings": "Embedding",
@@ -194,6 +195,7 @@
             "placeholder": "搜索...",
             "placeholders": {
                 "loras": "搜索 LoRA...",
+                "anima_loras": "[TODO: Translate] Search Anima LoRAs...",
                 "recipes": "搜索配方...",
                 "checkpoints": "搜索 Checkpoint...",
                 "embeddings": "搜索 Embedding..."
@@ -472,6 +474,7 @@
             "restartRequired": "需要重启才能生效",
             "modelTypes": {
                 "lora": "LoRA 路径",
+                "anima_loras": "[TODO: Translate] Anima LoRA Paths",
                 "checkpoint": "Checkpoint 路径",
                 "unet": "Diffusion 模型路径",
                 "embedding": "Embedding 路径"
@@ -1396,6 +1399,10 @@
         "loras": {
             "title": "初始化 LoRA 管理器",
             "message": "正在扫描并构建 LoRA 缓存。这可能需要几分钟..."
+        },
+        "anima_loras": {
+            "title": "[TODO: Translate] Initializing Anima LoRA Manager",
+            "message": "[TODO: Translate] Scanning and building Anima LoRA cache. This may take a few minutes..."
         },
         "checkpoints": {
             "title": "初始化 Checkpoint 管理器",

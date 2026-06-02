@@ -166,11 +166,14 @@ class Config:
         self.embeddings_roots = None
         self.base_models_roots = self._init_checkpoint_paths()
         self.embeddings_roots = self._init_embedding_paths()
+        # Anima LoRAs are a distinct category stored under <ComfyUI>/models/anima_loras
+        self.anima_loras_roots = self._init_anima_lora_paths()
         # Extra paths (only for LoRA Manager, not shared with ComfyUI)
         self.extra_loras_roots: List[str] = []
         self.extra_checkpoints_roots: List[str] = []
         self.extra_unet_roots: List[str] = []
         self.extra_embeddings_roots: List[str] = []
+        self.extra_anima_loras_roots: List[str] = []
         self.recipes_path: str = ""
 
         # Load extra folder paths from active library settings before symlink scan
@@ -215,8 +218,17 @@ class Config:
             extra_checkpoint = extra_folder_paths.get("checkpoints", []) or []
             extra_unet = extra_folder_paths.get("unet", []) or []
             extra_embedding = extra_folder_paths.get("embeddings", []) or []
+            extra_anima_lora = extra_folder_paths.get("anima_loras", []) or []
 
-            if not any([extra_lora, extra_checkpoint, extra_unet, extra_embedding]):
+            if not any(
+                [
+                    extra_lora,
+                    extra_checkpoint,
+                    extra_unet,
+                    extra_embedding,
+                    extra_anima_lora,
+                ]
+            ):
                 return
 
             filtered_extra_lora = self._filter_overlapping_extra_lora_paths(
@@ -230,6 +242,12 @@ class Config:
             ) = self._prepare_checkpoint_paths(extra_checkpoint, extra_unet)
             self.extra_embeddings_roots = self._prepare_embedding_paths(
                 extra_embedding
+            )
+            filtered_extra_anima_lora = self._filter_overlapping_extra_lora_paths(
+                self.anima_loras_roots, extra_anima_lora
+            )
+            self.extra_anima_loras_roots = self._prepare_lora_paths(
+                filtered_extra_anima_lora
             )
 
             recipes_path = library_config.get("recipes_path", "")
@@ -260,14 +278,21 @@ class Config:
                     + "\n - "
                     + "\n - ".join(self.extra_embeddings_roots)
                 )
+            if self.extra_anima_loras_roots:
+                logger.info(
+                    "Found extra Anima LoRA roots:"
+                    + "\n - "
+                    + "\n - ".join(self.extra_anima_loras_roots)
+                )
 
             logger.info(
                 "Applied library settings for '%s' with extra paths: loras=%s, "
-                "checkpoints=%s, embeddings=%s",
+                "checkpoints=%s, embeddings=%s, anima_loras=%s",
                 library_name,
                 extra_lora,
                 extra_checkpoint,
                 extra_embedding,
+                extra_anima_lora,
             )
 
         except Exception as exc:
@@ -328,6 +353,7 @@ class Config:
                 "checkpoints": list(self.checkpoints_roots or []),
                 "unet": list(self.unet_roots or []),
                 "embeddings": list(self.embeddings_roots or []),
+                "anima_loras": list(self.anima_loras_roots or []),
             }
 
             normalized_target_paths = _normalize_folder_paths_for_comparison(
@@ -474,11 +500,13 @@ class Config:
         roots.extend(self.loras_roots or [])
         roots.extend(self.base_models_roots or [])
         roots.extend(self.embeddings_roots or [])
+        roots.extend(self.anima_loras_roots or [])
         # Include extra paths for scanning symlinks
         roots.extend(self.extra_loras_roots or [])
         roots.extend(self.extra_checkpoints_roots or [])
         roots.extend(self.extra_unet_roots or [])
         roots.extend(self.extra_embeddings_roots or [])
+        roots.extend(self.extra_anima_loras_roots or [])
         return roots
 
     def _build_symlink_fingerprint(self) -> Dict[str, object]:
@@ -814,6 +842,8 @@ class Config:
             preview_roots.update(self._expand_preview_root(root))
         for root in self.embeddings_roots or []:
             preview_roots.update(self._expand_preview_root(root))
+        for root in self.anima_loras_roots or []:
+            preview_roots.update(self._expand_preview_root(root))
         # Include extra paths for preview access
         for root in self.extra_loras_roots or []:
             preview_roots.update(self._expand_preview_root(root))
@@ -822,6 +852,8 @@ class Config:
         for root in self.extra_unet_roots or []:
             preview_roots.update(self._expand_preview_root(root))
         for root in self.extra_embeddings_roots or []:
+            preview_roots.update(self._expand_preview_root(root))
+        for root in self.extra_anima_loras_roots or []:
             preview_roots.update(self._expand_preview_root(root))
         if self.recipes_path:
             preview_roots.update(self._expand_preview_root(self.recipes_path))
@@ -1094,6 +1126,7 @@ class Config:
         checkpoint_paths = folder_paths.get("checkpoints", []) or []
         unet_paths = folder_paths.get("unet", []) or []
         embedding_paths = folder_paths.get("embeddings", []) or []
+        anima_lora_paths = folder_paths.get("anima_loras", []) or []
 
         self.loras_roots = self._prepare_lora_paths(lora_paths)
         (
@@ -1102,6 +1135,11 @@ class Config:
             self.unet_roots,
         ) = self._prepare_checkpoint_paths(checkpoint_paths, unet_paths)
         self.embeddings_roots = self._prepare_embedding_paths(embedding_paths)
+        # Anima LoRA roots fall back to the derived <models>/anima_loras default
+        # when a library does not store an explicit path.
+        if not anima_lora_paths:
+            anima_lora_paths = self._default_anima_lora_paths()
+        self.anima_loras_roots = self._prepare_lora_paths(anima_lora_paths)
 
         # Process extra paths (only for LoRA Manager, not shared with ComfyUI)
         extra_paths = extra_folder_paths or {}
@@ -1109,6 +1147,7 @@ class Config:
         extra_checkpoint_paths = extra_paths.get("checkpoints", []) or []
         extra_unet_paths = extra_paths.get("unet", []) or []
         extra_embedding_paths = extra_paths.get("embeddings", []) or []
+        extra_anima_lora_paths = extra_paths.get("anima_loras", []) or []
 
         filtered_extra_lora_paths = self._filter_overlapping_extra_lora_paths(
             self.loras_roots,
@@ -1122,6 +1161,13 @@ class Config:
         ) = self._prepare_checkpoint_paths(extra_checkpoint_paths, extra_unet_paths)
         self.extra_embeddings_roots = self._prepare_embedding_paths(
             extra_embedding_paths
+        )
+        filtered_extra_anima_lora_paths = self._filter_overlapping_extra_lora_paths(
+            self.anima_loras_roots,
+            extra_anima_lora_paths,
+        )
+        self.extra_anima_loras_roots = self._prepare_lora_paths(
+            filtered_extra_anima_lora_paths
         )
 
         # Log extra folder paths
@@ -1217,6 +1263,53 @@ class Config:
             return unique_paths
         except Exception as e:
             logger.warning(f"Error initializing embedding paths: {e}")
+            return []
+
+    def _default_anima_lora_paths(self) -> List[str]:
+        """Resolve the default Anima LoRA root without hardcoding absolute paths.
+
+        Order of resolution:
+        1. Any ``anima_loras`` folder registered with ComfyUI's ``folder_paths``
+           (also used by the standalone mock, which reads ``settings.json``).
+        2. ``<ComfyUI base>/models/anima_loras`` derived from
+           ``folder_paths.models_dir``. The directory is created on demand so the
+           category is recognized as a model root even when empty.
+        """
+        raw_paths: List[str] = []
+        try:
+            raw_paths = list(folder_paths.get_folder_paths("anima_loras") or [])
+        except Exception:
+            raw_paths = []
+
+        if raw_paths:
+            return raw_paths
+
+        models_dir = getattr(folder_paths, "models_dir", None)
+        if isinstance(models_dir, str) and models_dir:
+            default_path = os.path.join(models_dir, "anima_loras")
+            try:
+                os.makedirs(default_path, exist_ok=True)
+            except Exception as exc:
+                logger.warning(
+                    "Could not create default anima_loras directory %s: %s",
+                    default_path,
+                    exc,
+                )
+            return [default_path]
+
+        return []
+
+    def _init_anima_lora_paths(self) -> List[str]:
+        """Initialize and validate Anima LoRA paths."""
+        try:
+            unique_paths = self._prepare_lora_paths(self._default_anima_lora_paths())
+            logger.info(
+                "Found Anima LoRA roots:"
+                + ("\n - " + "\n - ".join(unique_paths) if unique_paths else "[]")
+            )
+            return unique_paths
+        except Exception as e:
+            logger.warning(f"Error initializing Anima LoRA paths: {e}")
             return []
 
     def get_preview_static_url(self, preview_path: str) -> str:

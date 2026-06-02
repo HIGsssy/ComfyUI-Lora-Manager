@@ -1506,7 +1506,7 @@ export class SettingsManager {
         const extraFolderPaths = state.global.settings.extra_folder_paths || {};
 
         // Load paths for each model type
-        ['loras', 'checkpoints', 'unet', 'embeddings'].forEach((modelType) => {
+        ['loras', 'anima_loras', 'checkpoints', 'unet', 'embeddings'].forEach((modelType) => {
             const container = document.getElementById(`extraFolderPaths-${modelType}`);
             if (!container) return;
 
@@ -1562,7 +1562,7 @@ export class SettingsManager {
         const extraFolderPaths = {};
 
         // Collect paths for all model types
-        ['loras', 'checkpoints', 'unet', 'embeddings'].forEach((modelType) => {
+        ['loras', 'anima_loras', 'checkpoints', 'unet', 'embeddings'].forEach((modelType) => {
             const container = document.getElementById(`extraFolderPaths-${modelType}`);
             if (!container) return;
 
@@ -2873,6 +2873,9 @@ export class SettingsManager {
     async reloadContent() {
         if (this.currentPage === 'loras') {
             // Reload the loras without updating folders
+            await resetAndReload(false);
+        } else if (this.currentPage === 'anima_loras') {
+            // Reload the anima loras without updating folders
             await resetAndReload(false);
         } else if (this.currentPage === 'recipes') {
             // Reload the recipes without updating folders

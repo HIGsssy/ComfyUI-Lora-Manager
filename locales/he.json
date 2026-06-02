@@ -185,6 +185,7 @@
         "appTitle": "מנהל LoRA",
         "navigation": {
             "loras": "LoRAs",
+            "anima_loras": "[TODO: Translate] Anima LoRAs",
             "recipes": "מתכונים",
             "checkpoints": "Checkpoints",
             "embeddings": "Embeddings",
@@ -194,6 +195,7 @@
             "placeholder": "חפש...",
             "placeholders": {
                 "loras": "חפש LoRAs...",
+                "anima_loras": "[TODO: Translate] Search Anima LoRAs...",
                 "recipes": "חפש מתכונים...",
                 "checkpoints": "חפש checkpoints...",
                 "embeddings": "חפש embeddings..."
@@ -472,6 +474,7 @@
             "restartRequired": "Requires restart to take effect",
             "modelTypes": {
                 "lora": "נתיבי LoRA",
+                "anima_loras": "[TODO: Translate] Anima LoRA Paths",
                 "checkpoint": "נתיבי Checkpoint",
                 "unet": "נתיבי מודל דיפוזיה",
                 "embedding": "נתיבי Embedding"
@@ -1396,6 +1399,10 @@
         "loras": {
             "title": "מאתחל מנהל LoRA",
             "message": "סורק ובונה מטמון LoRA. זה עשוי לקחת מספר דקות..."
+        },
+        "anima_loras": {
+            "title": "[TODO: Translate] Initializing Anima LoRA Manager",
+            "message": "[TODO: Translate] Scanning and building Anima LoRA cache. This may take a few minutes..."
         },
         "checkpoints": {
             "title": "מאתחל מנהל Checkpoint",

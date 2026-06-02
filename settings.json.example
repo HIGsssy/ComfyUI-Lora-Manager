@@ -17,6 +17,9 @@
     "embeddings": [
       "C:/path/to/your/embeddings_folder",
       "C:/path/to/another/embeddings_folder"
+    ],
+    "anima_loras": [
+      "C:/path/to/your/anima_loras_folder"
     ]
   },
   "auto_organize_exclusions": []

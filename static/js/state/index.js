@@ -65,6 +65,7 @@ export function createDefaultSettings() {
 
 // Load preview versions from localStorage for each model type
 const loraPreviewVersions = getMapFromStorage('loras_preview_versions');
+const animaLoraPreviewVersions = getMapFromStorage('anima_loras_preview_versions');
 const checkpointPreviewVersions = getMapFromStorage('checkpoints_preview_versions');
 const embeddingPreviewVersions = getMapFromStorage('embeddings_preview_versions');
 
@@ -105,6 +106,44 @@ export const state = {
             bulkMode: false,
             selectedLoras: new Set(),
             loraMetadataCache: new Map(),
+            showFavoritesOnly: false,
+            showUpdateAvailableOnly: false,
+            duplicatesMode: false,
+            viewMode: 'active',
+            excludedViewState: {
+                sortBy: 'name:asc',
+                search: '',
+            },
+            activeViewSnapshot: null,
+        },
+
+        [MODEL_TYPES.ANIMA_LORA]: {
+            currentPage: 1,
+            isLoading: false,
+            hasMore: true,
+            sortBy: 'name',
+            activeFolder: getStorageItem(`${MODEL_TYPES.ANIMA_LORA}_activeFolder`),
+            activeLetterFilter: null,
+            previewVersions: animaLoraPreviewVersions,
+            searchManager: null,
+            searchOptions: {
+                filename: true,
+                modelname: true,
+                tags: false,
+                creator: false,
+                recursive: getStorageItem(`${MODEL_TYPES.ANIMA_LORA}_recursiveSearch`, true),
+            },
+            filters: {
+                baseModel: [],
+                tags: {},
+                license: {},
+                modelTypes: [],
+                search: '',
+                tagLogic: 'any',
+            },
+            bulkMode: false,
+            selectedModels: new Set(),
+            metadataCache: new Map(),
             showFavoritesOnly: false,
             showUpdateAvailableOnly: false,
             duplicatesMode: false,

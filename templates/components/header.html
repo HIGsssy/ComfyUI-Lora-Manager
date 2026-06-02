@@ -11,6 +11,8 @@
       {% set current_path = request.path %}
       {% if current_path.startswith('/loras/recipes') %}
       {% set current_page = 'recipes' %}
+      {% elif current_path.startswith('/anima_loras') %}
+      {% set current_page = 'anima_loras' %}
       {% elif current_path.startswith('/checkpoints') %}
       {% set current_page = 'checkpoints' %}
       {% elif current_path.startswith('/embeddings') %}
@@ -23,6 +25,10 @@
       <nav class="main-nav">
         <a href="/loras" class="nav-item{% if current_path == '/loras' %} active{% endif %}" id="lorasNavItem">
           <i class="fas fa-layer-group"></i> <span>{{ t('header.navigation.loras') }}</span>
+        </a>
+        <a href="/anima_loras" class="nav-item{% if current_path.startswith('/anima_loras') %} active{% endif %}"
+          id="animaLorasNavItem">
+          <i class="fas fa-wand-magic-sparkles"></i> <span>{{ t('header.navigation.anima_loras') }}</span>
         </a>
         <a href="/loras/recipes" class="nav-item{% if current_path.startswith('/loras/recipes') %} active{% endif %}"
           id="recipesNavItem">

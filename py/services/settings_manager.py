@@ -1673,6 +1673,7 @@ class SettingsManager:
 
         for service_name in (
             "lora_scanner",
+            "anima_loras_scanner",
             "checkpoint_scanner",
             "embedding_scanner",
             "recipe_scanner",
@@ -2025,6 +2026,7 @@ class SettingsManager:
 
             for service_name in (
                 "lora_scanner",
+                "anima_loras_scanner",
                 "checkpoint_scanner",
                 "embedding_scanner",
                 "recipe_scanner",

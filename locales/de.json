@@ -185,6 +185,7 @@
         "appTitle": "LoRA Manager",
         "navigation": {
             "loras": "LoRAs",
+            "anima_loras": "[TODO: Translate] Anima LoRAs",
             "recipes": "Rezepte",
             "checkpoints": "Checkpoints",
             "embeddings": "Embeddings",
@@ -194,6 +195,7 @@
             "placeholder": "Suchen...",
             "placeholders": {
                 "loras": "LoRAs suchen...",
+                "anima_loras": "[TODO: Translate] Search Anima LoRAs...",
                 "recipes": "Rezepte suchen...",
                 "checkpoints": "Checkpoints suchen...",
                 "embeddings": "Embeddings suchen..."
@@ -472,6 +474,7 @@
             "restartRequired": "Requires restart to take effect",
             "modelTypes": {
                 "lora": "LoRA-Pfade",
+                "anima_loras": "[TODO: Translate] Anima LoRA Paths",
                 "checkpoint": "Checkpoint-Pfade",
                 "unet": "Diffusionsmodell-Pfade",
                 "embedding": "Embedding-Pfade"
@@ -1396,6 +1399,10 @@
         "loras": {
             "title": "LoRA Manager wird initialisiert",
             "message": "LoRA-Cache wird gescannt und aufgebaut. Dies kann einige Minuten dauern..."
+        },
+        "anima_loras": {
+            "title": "[TODO: Translate] Initializing Anima LoRA Manager",
+            "message": "[TODO: Translate] Scanning and building Anima LoRA cache. This may take a few minutes..."
         },
         "checkpoints": {
             "title": "Checkpoint Manager wird initialisiert",

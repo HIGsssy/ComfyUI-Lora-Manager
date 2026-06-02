@@ -104,6 +104,27 @@ class ServiceRegistry:
             return scanner
     
     @classmethod
+    async def get_anima_lora_scanner(cls):
+        """Get or create Anima LoRA scanner instance"""
+        service_name = "anima_loras_scanner"
+
+        if service_name in cls._services:
+            return cls._services[service_name]
+
+        async with cls._get_lock(service_name):
+            # Double-check after acquiring lock
+            if service_name in cls._services:
+                return cls._services[service_name]
+
+            # Import here to avoid circular imports
+            from .anima_lora_scanner import AnimaLoraScanner
+
+            scanner = await AnimaLoraScanner.get_instance()
+            cls._services[service_name] = scanner
+            logger.debug(f"Created and registered {service_name}")
+            return scanner
+
+    @classmethod
     async def get_recipe_scanner(cls):
         """Get or create Recipe scanner instance"""
         service_name = "recipe_scanner"

@@ -200,6 +200,7 @@ class LoraManager:
 
             # Initialize scanners in background
             lora_scanner = await ServiceRegistry.get_lora_scanner()
+            anima_lora_scanner = await ServiceRegistry.get_anima_lora_scanner()
             checkpoint_scanner = await ServiceRegistry.get_checkpoint_scanner()
             embedding_scanner = await ServiceRegistry.get_embedding_scanner()
 
@@ -210,6 +211,10 @@ class LoraManager:
             init_tasks = [
                 asyncio.create_task(
                     lora_scanner.initialize_in_background(), name="lora_cache_init"
+                ),
+                asyncio.create_task(
+                    anima_lora_scanner.initialize_in_background(),
+                    name="anima_lora_cache_init",
                 ),
                 asyncio.create_task(
                     checkpoint_scanner.initialize_in_background(),
@@ -297,6 +302,7 @@ class LoraManager:
             all_roots.update(config.loras_roots)
             all_roots.update(config.base_models_roots or [])
             all_roots.update(config.embeddings_roots or [])
+            all_roots.update(config.anima_loras_roots or [])
 
             total_deleted = 0
             total_size_freed = 0

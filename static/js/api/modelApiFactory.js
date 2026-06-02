@@ -8,6 +8,9 @@ export function createModelApiClient(modelType) {
     switch (modelType) {
         case MODEL_TYPES.LORA:
             return new LoraApiClient(MODEL_TYPES.LORA);
+        case MODEL_TYPES.ANIMA_LORA:
+            // Anima LoRAs reuse the LoRA API client (same endpoints/behavior).
+            return new LoraApiClient(MODEL_TYPES.ANIMA_LORA);
         case MODEL_TYPES.CHECKPOINT:
             return new CheckpointApiClient(MODEL_TYPES.CHECKPOINT);
         case MODEL_TYPES.EMBEDDING:

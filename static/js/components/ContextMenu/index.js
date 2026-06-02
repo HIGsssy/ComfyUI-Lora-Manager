@@ -1,4 +1,5 @@
 export { LoraContextMenu } from './LoraContextMenu.js';
+export { AnimaLoraContextMenu } from './AnimaLoraContextMenu.js';
 export { RecipeContextMenu } from './RecipeContextMenu.js';
 export { CheckpointContextMenu } from './CheckpointContextMenu.js';
 export { EmbeddingContextMenu } from './EmbeddingContextMenu.js';
@@ -6,6 +7,7 @@ export { GlobalContextMenu } from './GlobalContextMenu.js';
 export { ModelContextMenuMixin } from './ModelContextMenuMixin.js';
 
 import { LoraContextMenu } from './LoraContextMenu.js';
+import { AnimaLoraContextMenu } from './AnimaLoraContextMenu.js';
 import { RecipeContextMenu } from './RecipeContextMenu.js';
 import { CheckpointContextMenu } from './CheckpointContextMenu.js';
 import { EmbeddingContextMenu } from './EmbeddingContextMenu.js';
@@ -16,6 +18,8 @@ export function createPageContextMenu(pageType) {
     switch (pageType) {
         case 'loras':
             return new LoraContextMenu();
+        case 'anima_loras':
+            return new AnimaLoraContextMenu();
         case 'recipes':
             return new RecipeContextMenu();
         case 'checkpoints':

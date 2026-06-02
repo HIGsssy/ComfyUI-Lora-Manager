@@ -30,6 +30,7 @@ export class HeaderManager {
     detectCurrentPage() {
       const path = window.location.pathname;
       if (path.includes('/loras/recipes')) return 'recipes';
+      if (path.includes('/anima_loras')) return 'anima_loras';
       if (path.includes('/checkpoints')) return 'checkpoints';
       if (path.includes('/embeddings')) return 'embeddings';
       if (path.includes('/statistics')) return 'statistics';
