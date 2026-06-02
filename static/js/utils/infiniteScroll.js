@@ -65,7 +65,7 @@ async function getCardCreator(pageType) {
 
 // Function to get the appropriate data fetcher based on page type
 async function getDataFetcher(pageType) {
-    if (pageType === 'loras' || pageType === 'embeddings' || pageType === 'checkpoints') {
+    if (pageType === 'loras' || pageType === 'anima_loras' || pageType === 'embeddings' || pageType === 'checkpoints') {
         return (page = 1, pageSize = 100) => getModelApiClient().fetchModelsPage(page, pageSize);
     } else if (pageType === 'recipes') {
         // Import the recipeApi module and use the fetchRecipesPage function
@@ -111,6 +111,7 @@ async function initializeVirtualScroll(pageType) {
             break;
         case 'checkpoints':
         case 'loras':
+        case 'anima_loras':
         default:
             gridId = 'modelGrid';
             break;

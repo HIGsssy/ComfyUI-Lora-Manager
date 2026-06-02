@@ -325,7 +325,7 @@ export async function showModelModal(model, modelType) {
     const updateBadgeTooltip = translate('modelCard.badges.updateAvailable', {}, 'Update available');
 
     // Prepare LoRA specific data with complete civitai data
-    const escapedWords = (modelType === 'loras' || modelType === 'embeddings') && modelWithFullData.civitai?.trainedWords?.length ?
+    const escapedWords = (modelType === 'loras' || modelType === 'anima_loras' || modelType === 'embeddings') && modelWithFullData.civitai?.trainedWords?.length ?
         modelWithFullData.civitai.trainedWords : [];
 
     // Generate model type specific content
@@ -356,7 +356,7 @@ export async function showModelModal(model, modelType) {
                 ${versionsTabBadge}
             </button>`.trim();
 
-    const supportsRecipesTab = modelType === 'loras' || modelType === 'checkpoints';
+    const supportsRecipesTab = modelType === 'loras' || modelType === 'anima_loras' || modelType === 'checkpoints';
 
     const tabsContent = supportsRecipesTab ?
         `<button class="tab-btn active" data-tab="showcase">${examplesText}</button>
@@ -674,7 +674,7 @@ export async function showModelModal(model, modelType) {
     updateNavigationControls();
 
     // Model-specific setup
-    if (modelType === 'loras' || modelType === 'embeddings') {
+    if (modelType === 'loras' || modelType === 'anima_loras' || modelType === 'embeddings') {
         setupTriggerWordsEditMode();
     }
 

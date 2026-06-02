@@ -123,8 +123,8 @@ export class BulkContextMenu extends BaseContextMenu {
 
         const downloadExampleImagesItem = this.menu.querySelector('[data-action="download-example-images"]');
         if (downloadExampleImagesItem) {
-            // Show on model pages (loras, checkpoints, embeddings), hide on recipes
-            const modelPages = ['loras', 'checkpoints', 'embeddings'];
+            // Show on model pages (loras, anima_loras, checkpoints, embeddings), hide on recipes
+            const modelPages = ['loras', 'anima_loras', 'checkpoints', 'embeddings'];
             downloadExampleImagesItem.style.display = modelPages.includes(currentModelType) ? 'flex' : 'none';
         }
 
