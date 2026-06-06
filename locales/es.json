@@ -456,6 +456,8 @@
             "noLibraries": "No hay bibliotecas configuradas",
             "defaultLoraRoot": "Raíz de LoRA",
             "defaultLoraRootHelp": "Establecer el directorio raíz predeterminado de LoRA para descargas, importaciones y movimientos",
+            "defaultAnimaLoraRoot": "[TODO: Translate] Anima LoRA Root",
+            "defaultAnimaLoraRootHelp": "[TODO: Translate] Set default Anima LoRA root directory for downloads, imports and moves",
             "defaultCheckpointRoot": "Raíz de checkpoint",
             "defaultCheckpointRootHelp": "Establecer el directorio raíz predeterminado de checkpoint para descargas, importaciones y movimientos",
             "defaultUnetRoot": "Raíz de Diffusion Model",
@@ -1769,6 +1771,7 @@
         },
         "settings": {
             "loraRootsFailed": "Error al cargar raíces de LoRA: {message}",
+            "animaLoraRootsFailed": "[TODO: Translate] Failed to load Anima LoRA roots: {message}",
             "checkpointRootsFailed": "Error al cargar raíces de checkpoint: {message}",
             "unetRootsFailed": "Error al cargar raíces de Diffusion Model: {message}",
             "embeddingRootsFailed": "Error al cargar raíces de embedding: {message}",

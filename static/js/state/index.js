@@ -19,6 +19,7 @@ const DEFAULT_SETTINGS_BASE = Object.freeze({
     proxy_username: '',
     proxy_password: '',
     default_lora_root: '',
+    default_anima_lora_root: '',
     default_checkpoint_root: '',
     default_embedding_root: '',
     recipes_path: '',

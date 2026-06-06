@@ -456,6 +456,8 @@
             "noLibraries": "구성된 라이브러리가 없습니다",
             "defaultLoraRoot": "LoRA 루트",
             "defaultLoraRootHelp": "다운로드, 가져오기 및 이동을 위한 기본 LoRA 루트 디렉토리를 설정합니다",
+            "defaultAnimaLoraRoot": "[TODO: Translate] Anima LoRA Root",
+            "defaultAnimaLoraRootHelp": "[TODO: Translate] Set default Anima LoRA root directory for downloads, imports and moves",
             "defaultCheckpointRoot": "Checkpoint 루트",
             "defaultCheckpointRootHelp": "다운로드, 가져오기 및 이동을 위한 기본 Checkpoint 루트 디렉토리를 설정합니다",
             "defaultUnetRoot": "Diffusion Model 루트",
@@ -1769,6 +1771,7 @@
         },
         "settings": {
             "loraRootsFailed": "LoRA 루트 로딩 실패: {message}",
+            "animaLoraRootsFailed": "[TODO: Translate] Failed to load Anima LoRA roots: {message}",
             "checkpointRootsFailed": "Checkpoint 루트 로딩 실패: {message}",
             "unetRootsFailed": "Diffusion Model 루트 로딩 실패: {message}",
             "embeddingRootsFailed": "Embedding 루트 로딩 실패: {message}",

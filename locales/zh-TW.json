@@ -456,6 +456,8 @@
             "noLibraries": "尚未設定任何資料庫",
             "defaultLoraRoot": "LoRA 根目錄",
             "defaultLoraRootHelp": "設定下載、匯入和移動時的預設 LoRA 根目錄",
+            "defaultAnimaLoraRoot": "[TODO: Translate] Anima LoRA Root",
+            "defaultAnimaLoraRootHelp": "[TODO: Translate] Set default Anima LoRA root directory for downloads, imports and moves",
             "defaultCheckpointRoot": "Checkpoint 根目錄",
             "defaultCheckpointRootHelp": "設定下載、匯入和移動時的預設 Checkpoint 根目錄",
             "defaultUnetRoot": "Diffusion Model 根目錄",
@@ -1769,6 +1771,7 @@
         },
         "settings": {
             "loraRootsFailed": "載入 LoRA 根目錄失敗：{message}",
+            "animaLoraRootsFailed": "[TODO: Translate] Failed to load Anima LoRA roots: {message}",
             "checkpointRootsFailed": "載入 checkpoint 根目錄失敗：{message}",
             "unetRootsFailed": "載入 Diffusion Model 根目錄失敗：{message}",
             "embeddingRootsFailed": "載入 embedding 根目錄失敗：{message}",

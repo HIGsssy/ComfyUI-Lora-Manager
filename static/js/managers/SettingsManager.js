@@ -977,6 +977,9 @@ export class SettingsManager {
         // Load default lora root
         await this.loadLoraRoots();
 
+        // Load default anima lora root
+        await this.loadAnimaLoraRoots();
+
         // Load default checkpoint root
         await this.loadCheckpointRoots();
 
@@ -1394,6 +1397,41 @@ export class SettingsManager {
         } catch (error) {
             console.error('Error loading LoRA roots:', error);
             showToast('toast.settings.loraRootsFailed', { message: error.message }, 'error');
+        }
+    }
+
+    async loadAnimaLoraRoots() {
+        try {
+            const defaultAnimaLoraRootSelect = document.getElementById('defaultAnimaLoraRoot');
+            if (!defaultAnimaLoraRootSelect) return;
+
+            // Fetch anima lora roots
+            const response = await fetch('/api/lm/anima_loras/roots');
+            if (!response.ok) {
+                throw new Error('Failed to fetch Anima LoRA roots');
+            }
+
+            const data = await response.json();
+            if (!data.roots || data.roots.length === 0) {
+                throw new Error('No Anima LoRA roots found');
+            }
+
+            defaultAnimaLoraRootSelect.innerHTML = '';
+
+            // Add options for each root
+            data.roots.forEach(root => {
+                const option = document.createElement('option');
+                option.value = root;
+                option.textContent = root;
+                defaultAnimaLoraRootSelect.appendChild(option);
+            });
+
+            const defaultRoot = state.global.settings.default_anima_lora_root || '';
+            defaultAnimaLoraRootSelect.value = data.roots.includes(defaultRoot) ? defaultRoot : data.roots[0];
+
+        } catch (error) {
+            console.error('Error loading Anima LoRA roots:', error);
+            showToast('toast.settings.animaLoraRootsFailed', { message: error.message }, 'error');
         }
     }
 

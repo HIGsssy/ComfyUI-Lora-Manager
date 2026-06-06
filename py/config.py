@@ -390,6 +390,14 @@ class Config:
                 "default_lora_root",
             )
 
+            default_anima_lora_root = _resolve_valid_default_root(
+                comfy_library.get("default_anima_lora_root", ""),
+                list(self.anima_loras_roots or []),
+                list(self.anima_loras_roots or [])
+                + list(comfy_library.get("extra_folder_paths", {}).get("anima_loras", []) or []),
+                "default_anima_lora_root",
+            )
+
             default_checkpoint_root = _resolve_valid_default_root(
                 comfy_library.get("default_checkpoint_root", ""),
                 list(self.checkpoints_roots or []),
@@ -429,6 +437,7 @@ class Config:
                 folder_paths=target_folder_paths,
                 extra_folder_paths=extra_folder_paths,
                 default_lora_root=default_lora_root,
+                default_anima_lora_root=default_anima_lora_root,
                 default_checkpoint_root=default_checkpoint_root,
                 default_embedding_root=default_embedding_root,
                 metadata=metadata,

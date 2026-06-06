@@ -456,6 +456,8 @@
             "noLibraries": "No libraries configured",
             "defaultLoraRoot": "LoRA Root",
             "defaultLoraRootHelp": "Set default LoRA root directory for downloads, imports and moves",
+            "defaultAnimaLoraRoot": "Anima LoRA Root",
+            "defaultAnimaLoraRootHelp": "Set default Anima LoRA root directory for downloads, imports and moves",
             "defaultCheckpointRoot": "Checkpoint Root",
             "defaultCheckpointRootHelp": "Set default checkpoint root directory for downloads, imports and moves",
             "defaultUnetRoot": "Diffusion Model Root",
@@ -1769,6 +1771,7 @@
         },
         "settings": {
             "loraRootsFailed": "Failed to load LoRA roots: {message}",
+            "animaLoraRootsFailed": "Failed to load Anima LoRA roots: {message}",
             "checkpointRootsFailed": "Failed to load checkpoint roots: {message}",
             "unetRootsFailed": "Failed to load diffusion model roots: {message}",
             "embeddingRootsFailed": "Failed to load embedding roots: {message}",

@@ -456,6 +456,8 @@
             "noLibraries": "לא הוגדרו ספריות",
             "defaultLoraRoot": "תיקיית שורש LoRA",
             "defaultLoraRootHelp": "הגדר את ספריית השורש המוגדרת כברירת מחדל של LoRA להורדות, ייבוא והעברות",
+            "defaultAnimaLoraRoot": "[TODO: Translate] Anima LoRA Root",
+            "defaultAnimaLoraRootHelp": "[TODO: Translate] Set default Anima LoRA root directory for downloads, imports and moves",
             "defaultCheckpointRoot": "תיקיית שורש Checkpoint",
             "defaultCheckpointRootHelp": "הגדר את ספריית השורש המוגדרת כברירת מחדל של checkpoint להורדות, ייבוא והעברות",
             "defaultUnetRoot": "תיקיית שורש Diffusion Model",
@@ -1769,6 +1771,7 @@
         },
         "settings": {
             "loraRootsFailed": "טעינת שורשי LoRA נכשלה: {message}",
+            "animaLoraRootsFailed": "[TODO: Translate] Failed to load Anima LoRA roots: {message}",
             "checkpointRootsFailed": "טעינת שורשי checkpoint נכשלה: {message}",
             "unetRootsFailed": "טעינת שורשי Diffusion Model נכשלה: {message}",
             "embeddingRootsFailed": "טעינת שורשי embedding נכשלה: {message}",

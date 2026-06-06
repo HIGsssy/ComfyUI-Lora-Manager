@@ -456,6 +456,8 @@
             "noLibraries": "Aucune bibliothèque configurée",
             "defaultLoraRoot": "Racine LoRA",
             "defaultLoraRootHelp": "Définir le répertoire racine LoRA par défaut pour les téléchargements, imports et déplacements",
+            "defaultAnimaLoraRoot": "[TODO: Translate] Anima LoRA Root",
+            "defaultAnimaLoraRootHelp": "[TODO: Translate] Set default Anima LoRA root directory for downloads, imports and moves",
             "defaultCheckpointRoot": "Racine Checkpoint",
             "defaultCheckpointRootHelp": "Définir le répertoire racine checkpoint par défaut pour les téléchargements, imports et déplacements",
             "defaultUnetRoot": "Racine Diffusion Model",
@@ -1769,6 +1771,7 @@
         },
         "settings": {
             "loraRootsFailed": "Échec du chargement des racines LoRA : {message}",
+            "animaLoraRootsFailed": "[TODO: Translate] Failed to load Anima LoRA roots: {message}",
             "checkpointRootsFailed": "Échec du chargement des racines checkpoint : {message}",
             "unetRootsFailed": "Échec du chargement des racines Diffusion Model : {message}",
             "embeddingRootsFailed": "Échec du chargement des racines embedding : {message}",

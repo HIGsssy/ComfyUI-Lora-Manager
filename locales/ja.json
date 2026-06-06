@@ -456,6 +456,8 @@
             "noLibraries": "ライブラリが設定されていません",
             "defaultLoraRoot": "LoRAルート",
             "defaultLoraRootHelp": "ダウンロード、インポート、移動用のデフォルトLoRAルートディレクトリを設定",
+            "defaultAnimaLoraRoot": "[TODO: Translate] Anima LoRA Root",
+            "defaultAnimaLoraRootHelp": "[TODO: Translate] Set default Anima LoRA root directory for downloads, imports and moves",
             "defaultCheckpointRoot": "Checkpointルート",
             "defaultCheckpointRootHelp": "ダウンロード、インポート、移動用のデフォルトcheckpointルートディレクトリを設定",
             "defaultUnetRoot": "Diffusion Modelルート",
@@ -1769,6 +1771,7 @@
         },
         "settings": {
             "loraRootsFailed": "LoRAルートの読み込みに失敗しました：{message}",
+            "animaLoraRootsFailed": "[TODO: Translate] Failed to load Anima LoRA roots: {message}",
             "checkpointRootsFailed": "checkpointルートの読み込みに失敗しました：{message}",
             "unetRootsFailed": "Diffusion Modelルートの読み込みに失敗しました：{message}",
             "embeddingRootsFailed": "embeddingルートの読み込みに失敗しました：{message}",

@@ -456,6 +456,8 @@
             "noLibraries": "Keine Bibliotheken konfiguriert",
             "defaultLoraRoot": "LoRA-Stammordner",
             "defaultLoraRootHelp": "Legen Sie den Standard-LoRA-Stammordner für Downloads, Importe und Verschiebungen fest",
+            "defaultAnimaLoraRoot": "[TODO: Translate] Anima LoRA Root",
+            "defaultAnimaLoraRootHelp": "[TODO: Translate] Set default Anima LoRA root directory for downloads, imports and moves",
             "defaultCheckpointRoot": "Checkpoint-Stammordner",
             "defaultCheckpointRootHelp": "Legen Sie den Standard-Checkpoint-Stammordner für Downloads, Importe und Verschiebungen fest",
             "defaultUnetRoot": "Diffusion-Modell-Stammordner",
@@ -1769,6 +1771,7 @@
         },
         "settings": {
             "loraRootsFailed": "Fehler beim Laden der LoRA-Stammverzeichnisse: {message}",
+            "animaLoraRootsFailed": "[TODO: Translate] Failed to load Anima LoRA roots: {message}",
             "checkpointRootsFailed": "Fehler beim Laden der Checkpoint-Stammverzeichnisse: {message}",
             "unetRootsFailed": "Fehler beim Laden der Diffusion-Modell-Stammverzeichnisse: {message}",
             "embeddingRootsFailed": "Fehler beim Laden der Embedding-Stammverzeichnisse: {message}",

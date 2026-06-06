@@ -668,7 +668,21 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
+                            <div class="setting-item">
+                                <div class="setting-row">
+                                    <div class="setting-info">
+                                        <label for="defaultAnimaLoraRoot">
+                                        {{ t('settings.folderSettings.defaultAnimaLoraRoot') }}
+                                        <i class="fas fa-info-circle info-icon" data-tooltip="{{ t('settings.folderSettings.defaultAnimaLoraRootHelp') }}"></i>
+                                    </label>
+                                    </div>
+                                    <div class="setting-control select-control">
+                                        <select id="defaultAnimaLoraRoot" onchange="settingsManager.saveSelectSetting('defaultAnimaLoraRoot', 'default_anima_lora_root')"></select>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="setting-item">
                                 <div class="setting-row">
                                     <div class="setting-info">

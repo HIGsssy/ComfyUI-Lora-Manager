@@ -330,7 +330,7 @@ export async function showModelModal(model, modelType) {
 
     // Generate model type specific content
     let typeSpecificContent;
-    if (modelType === 'loras') {
+    if (modelType === 'loras' || modelType === 'anima_loras') {
         typeSpecificContent = renderLoraSpecificContent(modelWithFullData, escapedWords);
     } else if (modelType === 'embeddings') {
         typeSpecificContent = renderEmbeddingSpecificContent(modelWithFullData, escapedWords);
@@ -636,7 +636,7 @@ export async function showModelModal(model, modelType) {
     if (activeModalElement) {
         activeModalElement.dataset.filePath = modelWithFullData.file_path || '';
         // Store usage_tips for LoRA models
-        if (modelType === 'loras' && modelWithFullData.usage_tips) {
+        if ((modelType === 'loras' || modelType === 'anima_loras') && modelWithFullData.usage_tips) {
             activeModalElement.dataset.usageTips = modelWithFullData.usage_tips;
         }
         // Store sub_type for checkpoint models
@@ -678,7 +678,7 @@ export async function showModelModal(model, modelType) {
         setupTriggerWordsEditMode();
     }
 
-    if (modelType === 'loras') {
+    if (modelType === 'loras' || modelType === 'anima_loras') {
         loadRecipesForModel({
             modelKind: 'lora',
             displayName: modelWithFullData.model_name,
@@ -838,7 +838,7 @@ function setupEditableFields(filePath, modelType) {
     }
 
     // LoRA specific field setup
-    if (modelType === 'loras') {
+    if (modelType === 'loras' || modelType === 'anima_loras') {
         setupLoraSpecificFields(filePath);
     }
 }
@@ -1078,7 +1078,7 @@ async function handleSendToWorkflow(target, modelType) {
     const modalElement = document.getElementById('modelModal');
     const currentFileName = modalElement?.querySelector('#file-name')?.textContent || '';
     
-    if (modelType === 'loras') {
+    if (modelType === 'loras' || modelType === 'anima_loras') {
         // For LoRA: Build syntax from usage tips and send
         const usageTipsData = modalElement?.dataset?.usageTips;
         const usageTips = usageTipsData ? JSON.parse(usageTipsData) : {};
